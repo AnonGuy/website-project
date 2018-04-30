@@ -31,5 +31,3 @@ def send_message(to_address, body):
         my_address, to_address, message
     )
     server.close()
-
-send_message('jeremiahboby@gmail.com', 'Hello yes')
