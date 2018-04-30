@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Loading...</title>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css"/>	
+	<script src="../static/js/requiredMethods.js"></script>	
+	<script src="../static/js/wonders.js"></script>
+	<script src="../static/js/wondersPageFiller.js"></script>
+	<script src="../static/js/commentSystem.js"></script>
+	<script src="../static/js/wondersFiller.js"></script>
+	<script src="../static/js/formValidation.js"></script>
+</head>
+
+<body onload="FillHTML();displayContainer();">
+
+	<div id="display-container">
+		<div id="comments-display"></div>
+	</div>
+	<div id="body-wrapper">
+		<div id="return-buttons">
+			<a href="/home"><button type="button" class="flex-item">Return home</button></a>
+		</div>		
+		<div class="centered">
+			<h1 id="wonder-header">Loading...</h1>
+		</div>
+		<article>
+			<p id="wonder-description">Loading...</p>
+		</article>
+		<div id="form-container">
+			<h1 id="comment-header">Tell us about your visit:</h1>
+			<form>
+				First Name: <input type="text" id="firstname">
+				Last Name: <input type="text" id="lastname"> <br/> <br/>
+				Email Address:
+				<input type="text" id="email-box">
+				<p id="comment-p">Comment:</p>
+				<input type="text" id="comment">
+				<button type="button" class="flex-item" onclick="postComment();">Post a comment</button>
+			</form>
+		</div>
+	</div>
+	
+</body>
+
+</html>

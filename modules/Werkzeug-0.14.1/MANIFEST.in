@@ -1,0 +1,9 @@
+include CHANGES.rst LICENSE AUTHORS tox.ini
+graft werkzeug/debug/shared
+graft tests
+graft docs
+graft artwork
+graft examples
+prune docs/_build
+prune docs/_themes
+global-exclude *.py[cdo] __pycache__ *.so
