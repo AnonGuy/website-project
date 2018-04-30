@@ -48,15 +48,15 @@ def api_system():
         'VALUES(?, ?, ?, ?)', fields
     )
     db.commit()
-    return jsonify(
-        {'status': 'Comment added successfully!'}
-    )
     send_message(
         data['email_address'],
         'We have recieved your comment:\n'
         '"{0}"\nThanks for giving us feedback!'.format(
             data['comment']
         )
+    )
+    return jsonify(
+        {'status': 'Comment added successfully!'}
     )
 
 
