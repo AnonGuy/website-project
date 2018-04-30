@@ -3,7 +3,7 @@
 import sqlite3
 from os.path import isfile
 
-import depends
+import depends  # NOQA
 from mail import send_message
 
 from flask import Flask, render_template, request, jsonify
@@ -11,7 +11,10 @@ from flask import Flask, render_template, request, jsonify
 if not isfile('comments.db'):
     db = sqlite3.connect('comments.db', check_same_thread=False)
     cursor = db.cursor()
-    cursor.execute('CREATE TABLE comments(first_name TEXT, last_name TEXT, email_address TEXT, comment TEXT)')
+    cursor.execute(
+        'CREATE TABLE comments(first_name TEXT, last_name TEXT, '
+        'email_address TEXT, comment TEXT)'
+    )
 else:
     db = sqlite3.connect('comments.db', check_same_thread=False)
     cursor = db.cursor()
@@ -22,23 +25,27 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/home')
 def index():
+    """The homepage of the website."""
     return render_template('index.html')
 
 
 @app.route('/wonder')
 def wonder():
+    """The page for each wonder, generated dynamically."""
     return render_template('wonder.html')
 
 
 @app.route('/api/post_comment', methods=['POST'])
 def api_system():
+    """The website API, used for posting and getting comments."""
     data = request.form
     fields = (
         data['first_name'], data['last_name'],
         data['email_address'], data['comment']
     )
     cursor.execute(
-        'INSERT INTO comments(first_name, last_name, email_address, comment) VALUES(?, ?, ?, ?)', fields
+        'INSERT INTO comments(first_name, last_name, email_address, comment) '
+        'VALUES(?, ?, ?, ?)', fields
     )
     db.commit()
     return jsonify(
@@ -46,7 +53,8 @@ def api_system():
     )
     send_message(
         data['email_address'],
-        'We have recieved your comment:\n"{0}"\nThanks for giving us feedback!'.format(
+        'We have recieved your comment:\n'
+        '"{0}"\nThanks for giving us feedback!'.format(
             data['comment']
         )
     )

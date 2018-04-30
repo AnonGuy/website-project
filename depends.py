@@ -1,3 +1,5 @@
+"""Add required dependencies to sys.path manually."""
+
 import os
 from sys import path
 
